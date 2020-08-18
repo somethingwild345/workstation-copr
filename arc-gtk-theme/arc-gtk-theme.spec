@@ -1,9 +1,9 @@
-%global common_configure --with-gnome-shell=3.36 --disable-cinnamon --disable-unity --disable-xfwm --disable-openbox --disable-lighter --disable-plank
+%global common_configure --disable-cinnamon --disable-unity --disable-xfwm --srcdir=..
 
 %global common_desc Arc is a flat theme with transparent elements for GTK 3, GTK 2 and GNOME Shell, Unity, Pantheon, Xfce, MATE, Cinnamon, Budgie Desktop.
 
 
-Name:		arc-gtk-theme
+Name:		arc-theme
 Version:	20200513
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
@@ -16,14 +16,15 @@ BuildArch:	noarch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gtk3-devel
-BuildRequires:	gtk-murrine-engine
+BuildRequires:  pkgconf
 BuildRequires:	inkscape
 BuildRequires:	optipng
 BuildRequires:	sassc
-BuildRequires:   pkgconf
+BuildRequires:	gnome-shell
+BuildRequires:	gtk3-devel
+BuildRequires:	fdupes
+BuildRequires:  make
 
-Requires:	filesystem
 Requires:	gnome-themes-extra
 Requires:	gtk-murrine-engine
 
@@ -31,15 +32,30 @@ Requires:	gtk-murrine-engine
 %{common_desc}
 
 %prep
-%autosetup -n arc-theme-%{version}
+%autosetup -p 1
 %{_bindir}/autoreconf -fiv
 
 %build	
+%{__mkdir} -p regular solid
+pushd regular
+%{__ln_s} -f ../configure configure
 %configure %{common_configure}
-%make_build
+popd
+pushd solid
+%{__ln_s} -f ../configure configure
+%configure --disable-transparency %{common_configure}
+popd
+%make_build -C regular
+%make_build -C solid
+
 
 %install	
-%make_install
+%make_install -C regular
+%make_install -C solid
+
+# Link duplicate files.
+%fdupes -s %{buildroot}%{_datadir}
+
 
 %files
 %license AUTHORS COPYING
@@ -47,6 +63,12 @@ Requires:	gtk-murrine-engine
 %{_datadir}/themes/*
 
 %changelog
+* Tue Aug 18 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Build
+- Add Regular and Solid Variants
+
+* Tue Jul 03 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Commit
+
 * Wed Jun 03 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
 - Initial Commit
-
