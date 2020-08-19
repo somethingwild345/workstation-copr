@@ -5,7 +5,7 @@
 
 Name:		arc-theme
 Version:	20200819
-Release:	2%{?dist}
+Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
 License:	GPLv3+
