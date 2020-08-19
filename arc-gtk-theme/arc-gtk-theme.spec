@@ -4,7 +4,7 @@
 
 
 Name:		arc-theme
-Version:	20200513
+Version:	20200819
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
@@ -35,7 +35,7 @@ Requires:	gtk-murrine-engine
 %autosetup -p 1
 %{_bindir}/autoreconf -fiv
 
-%build	
+%build
 %{__mkdir} -p regular solid
 pushd regular
 %{__ln_s} -f ../configure configure
@@ -49,7 +49,7 @@ popd
 %make_build -C solid
 
 
-%install	
+%install
 %make_install -C regular
 %make_install -C solid
 
@@ -63,6 +63,9 @@ popd
 %{_datadir}/themes/*
 
 %changelog
+* Wed Aug 19 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Version - 20200819
+
 * Tue Aug 18 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
 - New Build
 - Add Regular and Solid Variants
