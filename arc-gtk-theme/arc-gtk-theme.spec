@@ -4,7 +4,7 @@
 
 
 Name:		arc-theme
-Version:	20200819
+Version:	20201013
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
@@ -63,6 +63,9 @@ popd
 %{_datadir}/themes/*
 
 %changelog
+* Thu Oct 15 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Version - 20201013
+
 * Wed Aug 19 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
 - Add Cinnamon and Xfce
 
