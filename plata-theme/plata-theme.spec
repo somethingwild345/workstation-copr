@@ -5,7 +5,7 @@ Summary:        Plata Gtk Theme
 License:        GPL 2.0 ans SA 4.0
 URL:            %{git_url}
 
-Version:        0.9.8
+Version:        0.9.9
 Release:        1%{?dist}
 Source0:        %{git_url}/-/archive/%{version}/%{name}-%{version}.tar.gz       
 
@@ -81,5 +81,8 @@ Summary:        A Gtk+ theme based on Material Design Refresh.
 %{_datadir}/*
 
 %changelog
+* Fri Oct 23 2020 mdhahmadx@gmail.com 0.9.8
+- Pump to 0.9.9
+
 * Tue Sep 22 2020 mdhahmadx@gmail.com 0.9.8
 - Pump to 0.9.8
