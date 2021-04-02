@@ -1,10 +1,9 @@
-%global common_configure --with-cinnamon=4.6 --disable-unity --srcdir=..
+%global common_configure --disable-unity --srcdir=..
 
 %global common_desc Arc is a flat theme with transparent elements for GTK 3, GTK 2 and GNOME Shell, Unity, Pantheon, Xfce, MATE, Cinnamon, Budgie Desktop.
 
-
 Name:		arc-theme
-Version:	20201013
+Version:	20210127
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
@@ -48,7 +47,6 @@ popd
 %make_build -C regular
 %make_build -C solid
 
-
 %install
 %make_install -C regular
 %make_install -C solid
@@ -56,13 +54,15 @@ popd
 # Link duplicate files.
 %fdupes -s %{buildroot}%{_datadir}
 
-
 %files
 %license AUTHORS COPYING
 %doc README.md
 %{_datadir}/themes/*
 
 %changelog
+* Fri apr 2 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Version - 20210127
+
 * Thu Oct 15 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
 - New Version - 20201013
 
