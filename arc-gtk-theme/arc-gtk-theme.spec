@@ -31,7 +31,6 @@ Requires:	gtk-murrine-engine
 %build
 meson setup --prefix=/usr
       -Dthemes=gnome-shell,gtk2,gtk3,metacity,plank \
-      -DDgnome_shell_version=40 \
       -Dgtk3_version=3.24 \
 			build/
 
