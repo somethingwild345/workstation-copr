@@ -29,7 +29,7 @@ Requires:	gtk-murrine-engine
 %autosetup -p 1
 
 %build
-meson setup --prefix=/usr
+meson setup --prefix=/usr \
       -Dthemes=gnome-shell,gtk2,gtk3,metacity,plank \
       -Dgtk3_version=3.24 \
 			build/
