@@ -31,6 +31,7 @@ Requires:	gtk-murrine-engine
 %build
 meson setup --prefix=/usr
       -Dthemes=gnome-shell,gtk2,gtk3,metacity,plank \
+      -DDgnome_shell_version=40 \
       -Dgtk3_version=3.24 \
 			build/
 
@@ -45,25 +46,3 @@ meson install -C build
 %changelog
 * Mon Apr 12 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
 - New Version - 20210412
-
-* Fri Apr 2 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
-- New Version - 20210127
-
-* Thu Oct 15 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- New Version - 20201013
-
-* Wed Aug 19 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- Add Cinnamon and Xfce
-
-* Wed Aug 19 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- New Version - 20200819
-
-* Tue Aug 18 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- New Build
-- Add Regular and Solid Variants
-
-* Tue Jul 03 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- New Commit
-
-* Wed Jun 03 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
-- Initial Commit
