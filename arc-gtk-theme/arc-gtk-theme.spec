@@ -27,7 +27,6 @@ Requires:	gtk-murrine-engine
 
 %prep
 %autosetup -p 1
-%{_bindir}/autoreconf -fiv
 
 %build
 meson setup --prefix=/usr
