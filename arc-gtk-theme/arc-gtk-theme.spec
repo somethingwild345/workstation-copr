@@ -1,9 +1,7 @@
-%global common_configure --srcdir=..
-
 %global common_desc Arc is a flat theme with transparent elements for GTK 3, GTK 2 and GNOME Shell, Unity, Pantheon, Xfce, MATE, Cinnamon, Budgie Desktop.
 
 Name:		arc-theme
-Version:	2021040412
+Version:	20210412
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
@@ -34,7 +32,6 @@ Requires:	gtk-murrine-engine
 %build
 meson setup --prefix=/usr
       -Dthemes=gnome-shell,gtk2,gtk3,metacity,plank \
-      -Dgnome_shell_version=40 \
       -Dgtk3_version=3.24 \
 			build/
 
