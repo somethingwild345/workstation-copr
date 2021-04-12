@@ -1,9 +1,9 @@
-%global common_configure --disable-unity --srcdir=..
+%global common_configure --srcdir=..
 
 %global common_desc Arc is a flat theme with transparent elements for GTK 3, GTK 2 and GNOME Shell, Unity, Pantheon, Xfce, MATE, Cinnamon, Budgie Desktop.
 
 Name:		arc-theme
-Version:	20210127
+Version:	2021040412
 Release:	1%{?dist}
 Summary:	A flat theme with transparent elements
 
@@ -13,16 +13,13 @@ Source0:	%{url}/archive/%{version}.tar.gz#/arc-theme-%{version}.tar.gz
 
 BuildArch:	noarch
 
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:  pkgconf
 BuildRequires:	inkscape
 BuildRequires:	optipng
 BuildRequires:	sassc
 BuildRequires:	gnome-shell
 BuildRequires:	gtk3-devel
-BuildRequires:	fdupes
-BuildRequires:  make
+BuildRequires:  meson
 
 Requires:	gnome-themes-extra
 Requires:	gtk-murrine-engine
@@ -35,24 +32,14 @@ Requires:	gtk-murrine-engine
 %{_bindir}/autoreconf -fiv
 
 %build
-%{__mkdir} -p regular solid
-pushd regular
-%{__ln_s} -f ../configure configure
-%configure %{common_configure}
-popd
-pushd solid
-%{__ln_s} -f ../configure configure
-%configure --disable-transparency %{common_configure}
-popd
-%make_build -C regular
-%make_build -C solid
+meson setup --prefix=/usr
+      -Dthemes=gnome-shell,gtk2,gtk3,metacity,plank \
+      -Dgnome_shell_version=40 \
+      -Dgtk3_version=3.24 \
+			build/
 
 %install
-%make_install -C regular
-%make_install -C solid
-
-# Link duplicate files.
-%fdupes -s %{buildroot}%{_datadir}
+meson install -C build
 
 %files
 %license AUTHORS COPYING
@@ -60,7 +47,10 @@ popd
 %{_datadir}/themes/*
 
 %changelog
-* Fri apr 2 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
+* Mon Apr 12 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
+- New Version - 20210412
+
+* Fri Apr 2 2021 Muhammad Ahmad <mhdahmadx@gmail.com>
 - New Version - 20210127
 
 * Thu Oct 15 2020 Muhammad Ahmad <mhdahmadx@gmail.com>
